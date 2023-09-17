@@ -1,0 +1,102 @@
+
+$black: rgb(30, 30, 30);
+$white: rgb(247, 247, 247);
+$accent: #edb418;
+$very-dark: #303642;
+$dark: #5A626E;
+
+@mixin flex ($direction, $gap, $align, $justify){
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: $white;
+  border-radius: 99rem;
+  font-size: 1rem;
+}
+
+body {
+  background-color: $very-dark;
+}
+
+.globalBtn {
+  padding: 0.6rem 3rem;
+  color: $black;
+  background-color: $accent;
+  transition: 150ms ease-in;
+  border: 2px solid $accent;
+
+  &:hover{
+    cursor: pointer;
+    background-color: transparent;
+    color: $accent;
+  }
+}
+
+main {
+  @include flex(column, 3.5rem, normal, normal);
+
+  h1 {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 2.3rem
+  }
+}
+
+// SEARCH INPUT STYLING
+
+.addItem {
+  @include flex(column, 1.5rem, center, normal);
+
+  &__input {
+    font-size: 1.25rem;
+    color: $black;
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    width: 35rem;
+  
+    @media(max-width:768px){
+      width: 90%;
+    }
+  }
+}
+
+// ITEM STYLING
+
+.todoContainer {
+  @include flex(column, 2rem, center, normal);
+  
+  .todoItem {
+    @include flex(row, 1.5rem, center, space-between);
+    width: 45rem;
+    padding: 1.5rem;
+    border-radius: 5px;
+    background-color: $dark;
+
+    &__p {
+    font-size: 1.25rem;
+    }
+  
+    @media(max-width:768px){
+      width: 90%;
+      flex-direction: column;
+    }
+  
+    &__actions {
+      @include flex(row, 1rem, normal, normal);
+
+      &__btn {
+        padding: 0.6rem 2rem;
+      }
+    }
+  }
+}
+
